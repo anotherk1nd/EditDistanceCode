@@ -12,7 +12,7 @@ def EditDistance(s,t): # s,t are our 2 strings
     m = len(s)
     n = len(t)
     print m,n
-    d = sp.zeros(m,n)
+    d = sp.zeros[(m,n)]
     for i in range(m):
         d[i,0] = i
     for j in range(n):
