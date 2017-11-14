@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="53f40e36-d840-45e2-af61-4abf93c0d535" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EditDistanceMod.py" afterPath="$PROJECT_DIR$/EditDistanceMod.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/editdistancefromwiki.py" afterPath="$PROJECT_DIR$/editdistancefromwiki.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scratch" afterPath="$PROJECT_DIR$/scratch" />
-    </list>
+    <list default="true" id="53f40e36-d840-45e2-af61-4abf93c0d535" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
