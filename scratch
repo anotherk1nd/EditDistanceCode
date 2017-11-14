@@ -1,0 +1,26 @@
+#Wagner-Fischer Algorithm, basic dynamic programming method
+
+import scipy as sp
+
+s= 'asddfg'
+t= 'afg'
+
+m = len(s)
+n = len(t)
+print m,n
+d = sp.zeros([m,n])
+for i in range(m):
+    d[i,0] = i
+for j in range(n):
+    d[0,j] = j
+for j in range(n):
+    for i in range(m):
+        if s[i] == t[j]:
+            d[i,j] = d[i-1,j-1]
+        else:
+            d[i,j] = min((d[i-1,j]+1),
+                         (d[i,j-1]+1),
+                         (d[i-1,j-1]+1)
+                             )
+print d
+#return d[m,n]
