@@ -1,23 +1,30 @@
 #Import different modules here
-from editdistancefromwiki import EditDistance as ed
+from editdistancefromwikiUPDATE import EditDistance as ed
 import time
 import scipy as sp
 from RSG import RSG
 
+"""
 s= 'abdee'
 t= 'ade'
 s1 = RSG(4)
 print s1
 s2 = RSG(4)
 print s2
+"""
+#t0=time.time()
 
-t0=time.time()
+#print s1,s2,ed(s1,s2)
+#t1 = time.time()
 
-print s1,s2,ed(s1,s2)
-t1 = time.time()
+#time = float(t1-t0)
+#print 'Time to run is %.6f seconds' % (time)
+s1 = RSG(5)
+s2 = RSG(6)
+print s1,s2
+print ed(s1,s2)
 
-time = float(t1-t0)
-print time
-print 'Time to run is %.6f seconds' % (time)
+for i in range(10):
+    print ed(RSG(i),RSG(i))
 
-print s,t,ed(s,t)
+#print s,t,ed(s,t)

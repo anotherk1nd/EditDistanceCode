@@ -4,7 +4,8 @@ import random
 import string
 
 def RSG(N):
-    str = []
+    str = [] # only works with empty list for str and and empty string for str1
+    str1 = ""
     for _ in range(N): # I don't understand difference between underscore and i but was in soln
         str.append(random.choice(string.ascii_lowercase))
         str1 = ''.join(str) # I think this can be implemented in 1 line
@@ -12,4 +13,5 @@ def RSG(N):
     return str1
 
 
+#print RSG(5)
 #print RSG(5)

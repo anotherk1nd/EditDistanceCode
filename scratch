@@ -3,7 +3,7 @@
 
 import scipy as sp
 
-s= 'abdee'
+s= 'abee'
 t= 'ade'
 
 m = len(s) + 1
