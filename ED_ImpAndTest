@@ -4,17 +4,16 @@ import time
 import scipy as sp
 from RSG import RSG
 
-string =
-
 s= 'abdee'
-
 t= 'ade'
-
-
+s1 = RSG(4)
+print s1
+s2 = RSG(4)
+print s2
 
 t0=time.time()
 
-print ed(s,t)
+print s1,s2,ed('dog','bog')
 
 t1 = time.time()
 

@@ -2,8 +2,8 @@
 from editdistancefromwiki import EditDistance as ed
 
 #Trial
-s= 'abdee'
+s= 'dog'
 
-t= 'ade'
+t= 'ag'
 
 print ed(s,t)
