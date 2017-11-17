@@ -1,26 +1,52 @@
 #Wagner-Fischer Algorithm, basic dynamic programming method
+#This outputs matrix like we made in class and we write by hand, with 1st row and column taken by indices
 
 import scipy as sp
 
-s= 'asddfg'
-t= 'afg'
+s= 'abdee'
+t= 'ade'
 
-m = len(s)
-n = len(t)
-print m,n
-d = sp.zeros([m,n])
+m = len(s) + 1
+n = len(t) + 1
+#print m,n
+d = sp.zeros((m,n)) # Stores the min edit distance between prefixes (I think) slide 46/87
+#print d
+b = sp.zeros((m,n)) # Stores 'arrows' for retrieving soln. Code arrows according to keypad, up = 8,left 4 etc.
+
+#We initialise 1st row and column to increasing integers corresponding to index of string
 for i in range(m):
     d[i,0] = i
 for j in range(n):
     d[0,j] = j
+print d
+
+#Need to use different index ranges here for strings I think
+print 'm,n',m,n
+for j in range(1,len(t)+1):
+    for i in range(1,len(s)+1):
+        print i,j
+        print s[i-1],t[j-1]
+        if s[i-1] == t[j-1]:
+            d[i, j] = d[i - 1, j - 1]  # If they are same, get value from subproblems of strings excluding that value
+        else:
+            d[i, j] = min((d[i - 1, j] + 1),
+                          # If they are different, choose subprob with lowest value, add 1 to indicate operation is necessary
+                          (d[i, j - 1] + 1),
+                          (d[i - 1, j - 1] + 1)
+                          )
+"""
 for j in range(1,n):
     for i in range(1,m):
-        if s[i] == t[j]:
-            d[i,j] = d[i-1,j-1]
+        if s[i-1] == t[j-1]: # Don't need to do anything since both letters are the same
+            d[i,j] = d[i-1,j-1] # Update subprob
+            b[i,j] = 7
+        elif d[i-1,j] >=  d[i,j-1]:
+            d[i,j] = d[i-1,j]
+            b[i,j] = 8
         else:
-            d[i,j] = min((d[i-1,j]+1),
-                         (d[i,j-1]+1),
-                         (d[i-1,j-1]+1)
-                             )
+            d[i,j] = d[i,j-1]
+            b[i,j] = 4
+"""
 print int(d[m-1,n-1])
 print d
+#print b
