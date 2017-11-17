@@ -1,0 +1,18 @@
+#Import different modules here
+from editdistancefromwiki import EditDistance as ed
+import time
+
+
+s= 'abdee'
+
+t= 'ade'
+
+t0=time.time()
+
+print ed(s,t)
+
+t1 = time.time()
+
+time = float(t1-t0)
+print time
+print 'Time to run is %.6f seconds' % (time)

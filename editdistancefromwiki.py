@@ -1,6 +1,6 @@
 #Implentation of pseudocode found at https://www.google.fr/search?q=wagner+fischer+algorithm&gws_rd=cr&dcr=0&ei=4eAKWuz6JIfNwAKvkouoBw
 
-import scipy as sp
+import scipy as sp # After my own experiments I found that we need to import necessary packages within the module, else it won't run correctly
 
 
 def EditDistance(s,t): # s,t are our 2 strings
