@@ -6,4 +6,5 @@ s= 'dog'
 
 t= 'g'
 
-print ed(s,t)
+print ed(s,t):
+

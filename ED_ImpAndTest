@@ -19,12 +19,15 @@ print s2
 
 #time = float(t1-t0)
 #print 'Time to run is %.6f seconds' % (time)
-s1 = RSG(5)
-s2 = RSG(6)
-print s1,s2
-print ed(s1,s2)
+#s1 = RSG(5)
+#s2 = RSG(6)
+#print s1,s2
+#print ed(s1,s2)
 
 for i in range(10):
-    print ed(RSG(i),RSG(i))
+    a = RSG(i)
+    b = RSG(i)
+    print a,b
+    print ed(a,b)
 
 #print s,t,ed(s,t)

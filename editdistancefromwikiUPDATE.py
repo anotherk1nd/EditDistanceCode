@@ -1,7 +1,7 @@
 #Implentation of pseudocode found at https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm
 
 import scipy as sp # After my own experiments I found that we need to import necessary packages within the module, else it won't
-
+#This might break if longer string is the other way round, need to check
 
 def EditDistance(s,t): # s,t are our 2 strings
     #For all i and j, d[i,j] will hold the Levenshtein distance between
