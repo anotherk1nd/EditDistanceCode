@@ -17,8 +17,8 @@ def EditDistance(s,t): # s,t are our 2 strings
         d[i,0] = i
     for j in range(n):
         d[0,j] = j
-    for j in range(1,n):
-        for i in range(1,m):
+    for j in range(n):
+        for i in range(m):
             if s[i] == t[j]:
                 d[i,j] = d[i-1,j-1]
             else:

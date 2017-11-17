@@ -13,7 +13,7 @@ print s2
 
 t0=time.time()
 
-print s1,s2,ed('dog','bog')
+print s1,s2,ed(s1,s2)
 
 t1 = time.time()
 

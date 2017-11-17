@@ -4,6 +4,6 @@ from editdistancefromwiki import EditDistance as ed
 #Trial
 s= 'dog'
 
-t= 'ag'
+t= 'g'
 
 print ed(s,t)
