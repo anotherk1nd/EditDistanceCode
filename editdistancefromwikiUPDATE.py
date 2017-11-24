@@ -1,6 +1,7 @@
 #Implentation of pseudocode found at https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm
 
 import scipy as sp # After my own experiments I found that we need to import necessary packages within the module, else it won't
+import pandas as pd
 #This might break if longer string is the other way round, need to check
 
 def EditDistance(s,t): # s,t are our 2 strings
@@ -29,8 +30,13 @@ def EditDistance(s,t): # s,t are our 2 strings
                               (d[i, j - 1] + 1),
                               (d[i - 1, j - 1] + 1)
                               )
-    print d #This was to check it works
-    return int(d[m-1,n-1])
+    dist = int(d[m - 1, n - 1])
+    results = pd.DataFrame(columns=('Ed','Ed_Matrix'))
+    #results=sp.zeros(2,1)
+    results.loc[0] = [dist, d]
+    #print results
+    #print results['Ed']
+    return results
 
 #EditDistance('ade','ade')
 

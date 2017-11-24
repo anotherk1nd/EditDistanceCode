@@ -4,6 +4,7 @@ import time
 import scipy as sp
 from RSG import RSG
 import pandas as pd
+pd.set_option('display.max_colwidth', -1)
 
 """
 s= 'abdee'
@@ -26,19 +27,20 @@ print s2
 #print ed(s1,s2)
 
 df = pd.DataFrame(columns=('ref','Str1','Str2','Ed','Ed_Matrix','comptime')) #=str(),Str2=str(),Time=int(),stringsAsFactors=FALSE)
-print df
-for i in range(10):
+#print df
+for i in range(1,10):
     str1 = RSG(i)
     str2 = RSG(i)
-    print str1,str2
-    print ed(str1, str2)
+    #print str1,str2
+    #print ed(str1, str2)
     time1 = time.time()
-    ed1 = ed(str1,str2)
+    results = ed(str1,str2)
+    #print results
     time2 = time.time()
     dtime = time2-time1
-    #print dtime
-    df.loc[i] = [time1,str1,str2,ed1,5,dtime]
+    #print results.loc(i,['d'])
+    df.loc[i] = [time1,str1,str2,results.loc[0,'Ed'],results.loc[0,'Ed_Matrix'],dtime]
 
-print df
+print df['Ed_Matrix']
 
 #print s,t,ed(s,t)

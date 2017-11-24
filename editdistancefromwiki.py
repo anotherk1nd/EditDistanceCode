@@ -26,8 +26,9 @@ def EditDistance(s,t): # s,t are our 2 strings
                              (d[i,j-1]+1),
                              (d[i-1,j-1]+1)
                              )
-    print d #This was to check it works
-    return int(d[m-1,n-1])
+    dist = int(d[m-1,n-1])
+    #print d #This was to check it works
+    return dist,d
 
 
 
