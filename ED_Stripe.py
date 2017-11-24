@@ -19,7 +19,7 @@ strip = ED_Stripe(s,t,1) #Problem with filling matrix due to different indices, 
 #print len(strip)
 print strip
 
-k = 1
+k = 2
 for i in range(len(s)+1):
     for j in range(i,i+k):
         print i,j
