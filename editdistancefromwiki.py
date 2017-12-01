@@ -30,6 +30,10 @@ def EditDistance(s,t): # s,t are our 2 strings
     #print d #This was to check it works
     return dist,d
 
+s='trials'
+t='zeil'
+print EditDistance(t,s)
+
 
 
 

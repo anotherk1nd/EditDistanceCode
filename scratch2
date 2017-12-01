@@ -2,29 +2,71 @@
 
 import scipy as sp
 
-s = 'abdee'
-t = 'ade'
-m = len(s)
-n = len(t)
+t='tails'
+s='tails'
+m = len(s)+1
+n = len(t)+1
 #print m,n
 d = sp.zeros((m,n))
 b = sp.zeros((m,n)) # Stores 'arrows' for retrieving soln. Code arrows according to keypad, up = 8,left 4 etc.
-for i in range(0,m):
+
+def delete(d,i,j):
+    d[i,j]=d[i - 1, j] + 1
+
+def replace(d,i,j):
+    d[i,j] = d[i-1,j-1] + 1
+
+def insert(d,i,j):
+    d[i,j] = d[i-1,j-1] + 1
+
+
+print b,d
+for i in range(m):
     d[i,0] = i
 for j in range(n):
     d[0,j] = j
 for j in range(1,n):
     for i in range(1,m):
-        if s[i] == t[j]:
+        print "i,j,s[i-1],t[j-1]"
+        print i,j,s[i-1],t[j-1]
+        if s[i-1] == t[j-1]:
             d[i,j] = d[i-1,j-1]
-            b[i,j] = 7 # Do nothing and go to next subprob
-        elif d[i-1,j] >=  d[i,j-1]:
-            d[i,j] = d[i-1,j]
-            b[i,j] = 8
-        #elif d[i,j-1] >= d[]
-        else:
-            d[i,j] = d[i,j-1]
+            b[i,j] = 7 # Do nothing and go to next subprob since letters are same
+            #break
+            #print 1
+        elif (d[i-1,j] <=  (d[i,j-1]  and d[i-1,j] <= d[i-1,j-1])):
+            #d[i,j] = d[i-1,j] + 1
+            delete(d, i, j)
+            b[i,j] = 8 #Deletion
+            #break
+            #print 2
+        elif (d[i,j-1] <= (d[i-1, j] and d[i,j-1] <= d[i-1, j-1] )):
+            #d[i, j] = d[i,j-1] + 1
+            insert(d,i,j)
+            #break
+            #print 3
+        elif d[i-1, j-1]<= (d[i-1, j] and d[i-1, j-1]<= d[i, j-1]):
+            #d[i,j] = d[i,j-1] + 1
+            replace(d,i,j)
             b[i,j] = 4
+            #print 4
+            #break
+        else:
+            print 'error'
+            print d,b,i,j
+            break
+
 print d
 print b
-print int(d[m-1,n-1])
+print "i,j,s[i-1],t[j-1]"
+print i,j,s[i-1],t[j-1]
+print "d[i-1, j-1]<= (d[i-1, j] and d[i-1, j-1]<= d[i, j-1])"
+print d[i-1, j-1], d[i-1, j],d[i-1, j-1],d[i, j-1]
+print m,n,int(d[m-1,n-1])
+
+"""
+if 5<=6 and 4:
+    print 'yes'
+else:
+    print 'no'
+"""

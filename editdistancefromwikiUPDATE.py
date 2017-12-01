@@ -2,6 +2,7 @@
 
 import scipy as sp # After my own experiments I found that we need to import necessary packages within the module, else it won't
 import pandas as pd
+pd.set_option('display.max_colwidth', -1)
 #This might break if longer string is the other way round, need to check
 
 def EditDistance(s,t): # s,t are our 2 strings
@@ -18,8 +19,8 @@ def EditDistance(s,t): # s,t are our 2 strings
         d[i,0] = i
     for j in range(n):
         d[0,j] = j
-    for j in range(1, len(t) + 1):
-        for i in range(1, len(s) + 1):
+    for j in range(1, n):
+        for i in range(1, m):
             #print i, j
             #print s[i - 1], t[j - 1]
             if s[i - 1] == t[j - 1]:
@@ -38,7 +39,19 @@ def EditDistance(s,t): # s,t are our 2 strings
     #print results['Ed']
     return results
 
-#EditDistance('ade','ade')
 
-
-
+#doesnt work
+t='teils'
+s='zeils'
+print EditDistance(s,t)
+"""
+#works
+s='kitten'
+t='sitting'
+print EditDistance(s,t)
+"""
+"""
+s='bet'
+t='ket'
+print EditDistance(s,t)
+"""

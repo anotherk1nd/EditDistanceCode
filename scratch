@@ -3,7 +3,7 @@
 
 import scipy as sp
 
-s= 'abee'
+s= 'abdee'
 t= 'ade'
 
 m = len(s) + 1
@@ -40,9 +40,12 @@ for j in range(1,n):
         if s[i-1] == t[j-1]: # Don't need to do anything since both letters are the same
             d[i,j] = d[i-1,j-1] # Update subprob
             b[i,j] = 7
-        elif d[i-1,j] >=  d[i,j-1]:
-            d[i,j] = d[i-1,j]
+        elif d[i-1,j] >=  d[i,j-1], d[i - 1, j - 1]:
+            d[i,j] = d[i-1,j]+1
             b[i,j] = 8
+        elif d[i-1,j-1] >= d[i - 1, j],d[i, j - 1]:
+            d[i,j] = d[i-1,j-1]
+            b[i,j]=
         else:
             d[i,j] = d[i,j-1]
             b[i,j] = 4
