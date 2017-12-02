@@ -32,8 +32,10 @@ print s2
 
 df = pd.DataFrame(columns=('ref','Str1','Str2','Ed','Ed_Matrix','comptime')) #=str(),Str2=str(),Time=int(),stringsAsFactors=FALSE)
 #print df
+counter = 0
 for i in range(1,10):
     for j in range(1,10):
+        counter += 1
         str1 = RSG(i)
         str2 = RSG(j)
         #print str1,str2
@@ -45,14 +47,17 @@ for i in range(1,10):
         dtime = time2-time1
         #print results.loc(i,['d'])
         #df.loc[i] = [time1,str1,str2,results.loc[0,'Ed'],results.loc[0,'Ed_Matrix'],dtime]
-        dftemp = pd.DataFrame([time1,str1,str2,results.loc[0,'Ed'],results.loc[0,'Ed_Matrix'],dtime])
-        print dftemp
-        df = df.append(dftemp)
+        #df = pd.DataFrame([time1,str1,str2,results.loc[0,'Ed'],results.loc[0,'Ed_Matrix'],dtime])
+        df.loc[counter] = [time1,str1,str2,results.loc[0,'Ed'],results.loc[0,'Ed_Matrix'],dtime]
+        #dftemp = pd.DataFrame()
+
+        #print dftemp
+        #df = df.append(dftemp)
         #print df
 
 print df
 root = 'EditDistanceCode'
-os.path.join(root,)
+os.path.join(root,) #Use this to work independent of operating system
 path = r'Results/'
 name = 'output '+str(datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S"))+'.csv'
 df.to_csv(path+name)

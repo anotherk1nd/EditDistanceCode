@@ -43,16 +43,16 @@ def EditDistance(s,t): # s,t are our 2 strings
 #doesnt work
 """
 t='teils'
-s='zeils'
+s='fails'
 print EditDistance(s,t)
-"""
 """
 
+
 #works
-s='kitten'
-t='sitting'
+t='kitten'
+s='sitting'
 print EditDistance(s,t)
-"""
+
 """
 s='bet'
 t='ket'
