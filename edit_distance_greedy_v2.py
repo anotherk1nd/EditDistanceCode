@@ -18,9 +18,15 @@ def GreditDist(str1, str2):
 
 
 	if m == 0:
+		str1_alignment = ['-' for i in range(n)]
+		print(str1_alignment+"\n")
+		print(str2)
 		return n
 
 	if n == 0:
+		str2_alignment = ['-'for i in range(m)]
+		print(str1+"\n")
+		print(str2_alignment)
 		return m
 	
 	#For more convenience, I swap of str2 is shorter than str1 (you will understand why)
