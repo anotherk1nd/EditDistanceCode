@@ -123,13 +123,15 @@ def recursive(s1,s2):
 #     print('END OF PROGRAM')
 #     print('***************')
 
-# str1=RSG(3)
-# str2=RSG(5)
+ #str1=RSG(3)
+ #str2=RSG(5)
 #
 # print(str1)
 # print(str2)
 #
-# edit_distance,al1,al2=def_branch(str1,str2,0,max(len(str1),len(str2)))
-# print(al1)
-# print(al2)
-# print(edit_distance)
+str1 = 'sunrise'
+str2 = 'sunshine'
+edit_distance,al1,al2=def_branch(str1,str2,0,max(len(str1),len(str2)))
+print(al1)
+print(al2)
+print(edit_distance)
