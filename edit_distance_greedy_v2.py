@@ -18,16 +18,16 @@ def GreditDist(str1, str2):
 
 
 	if m == 0:
-		str1_alignment = ['-' for i in range(n)]
-		print(str1_alignment+"\n")
-		print(str2)
-		return n
+		str1_alignment = ''.join(['-' for i in range(n)])
+		mark = ''.join([' ' for i in range(n)])
+		
+		return n, str1_alignment, str2, mark #I return the edit distance and the matching alignment
 
 	if n == 0:
-		str2_alignment = ['-'for i in range(m)]
-		print(str1+"\n")
-		print(str2_alignment)
-		return m
+		str2_alignment = ''.join(['-'for i in range(m)])
+		mark = ''.join([' ' for i in range(m)])
+		
+		return m, str1, str2_alignment, mark
 	
 	#For more convenience, I swap of str2 is shorter than str1 (you will understand why)
 	if (min_mn == n):
@@ -43,7 +43,7 @@ def GreditDist(str1, str2):
 		#test if both current characters are the same
 		if str1[c1] == str2[c2]:
 			#In this case, I do nothing and I move on
-			print(result_string + str1[c1:])
+			#print(result_string + str1[c1:])
 			#Building up the alignment
 			str1_alignment += str1[c1]
 			str2_alignment += str2[c2]
@@ -60,11 +60,11 @@ def GreditDist(str1, str2):
 			edit_distance += 1
 			
 			#I compare the current character of str1 to the next character of str2
-			if str1[c1] == str2[c2 + 1]:
+			if str1[c1] == str2[c2 + 1] and c2 < n:
 
-				print("--- INSERTION ---")
+				# print("--- INSERTION ---")
 				#They are the same, the best at this moment is to insert the current character on str2 before the current one of str1
-				print(result_string + str2[c2] + str1[c1:])  # evolution of str1 to str2 for insertion
+				# print(result_string + str2[c2] + str1[c1:])  # evolution of str1 to str2 for insertion
 				result_string = result_string + str2[c2] + str1[c1]
 				#Alignment
 				str1_alignment += '-' + str1[c1]
@@ -81,8 +81,8 @@ def GreditDist(str1, str2):
 			else: #if it's the end of the first string, no deletion possible
 
 				if c1 < min_mn-1 and str1[c1 + 1] == str2[c2]:
-					print("--- DELETION ---")
-					print(result_string + str1[c1 + 1:]) #Evolution for deletion
+					# print("--- DELETION ---")
+					# print(result_string + str1[c1 + 1:]) #Evolution for deletion
 					result_string += str2[c2]
 					#alignment
 					str1_alignment += str1[c1] + str1[c1 + 1]
@@ -95,8 +95,8 @@ def GreditDist(str1, str2):
 				
 				#Else, substitution is my backup solution... str1[c1] becomes str2[c2]
 				else:
-					print("--- SUBSTITUTION ---")
-					print(result_string + str2[c2] + str1[c1 + 1:]) #evolution for substitution
+					# print("--- SUBSTITUTION ---")
+					# print(result_string + str2[c2] + str1[c1 + 1:]) #evolution for substitution
 					result_string += str2[c2]
 					#alignment
 					str1_alignment += str1[c1]
@@ -108,10 +108,10 @@ def GreditDist(str1, str2):
 					result_c += 1
 
 		# Print the result string
-		print(str2)
-		print("State: ", result_string+"_")
-		print("Cursors:",c1 + 1, c2 + 1) #Current position of the cursors
-		print("----------------------\n")
+		# print(str2)
+		# print("State: ", result_string+"_")
+		# print("Cursors:",c1 + 1, c2 + 1) #Current position of the cursors
+		# print("----------------------\n")
 
 			
 	#If there are remaining characters, I insert/delete them to the result string
@@ -127,26 +127,26 @@ def GreditDist(str1, str2):
 			c1 += 1
 			c2 += 1
 			# Print the result string
-			print(result_string)
-			print(str2)
-			print("State: ", result_string+"_")
-			print("Cursors:",c1 + 1, c2 + 1)
-			print("----------------------\n")
+			# print(result_string)
+			# print(str2)
+			# print("State: ", result_string+"_")
+			# print("Cursors:",c1 + 1, c2 + 1)
+			# print("----------------------\n")
 	#edit distance += length(str2) - length(result string)
 	#edit_distance += n - len(result_string)
 	
-	print("Levenshtein Edit distance (approximation):", edit_distance)
-	print("************************ ALIGNMENT ***************************")
-	print(str1_alignment)
-	print(mark)
-	print(str2_alignment)
-	return edit_distance
+	return edit_distance, str1_alignment, str2_alignment, mark
 
 
 ###### TEST SESSION
 
-str1 = "sunday"
-str2 = "saturday"
-
-ed = GreditDist(str1, str2)
-print 'This is ed',ed
+# str1 = ""
+# str2 = "saturday"
+#
+# edit_distance, al1, al2, mark = GreditDist(str1, str2)
+#
+# print("Levenshtein Edit distance (approximation):", edit_distance)
+# print("************************ ALIGNMENT ***************************")
+# print(al1)
+# print(mark)
+# print(al2)
