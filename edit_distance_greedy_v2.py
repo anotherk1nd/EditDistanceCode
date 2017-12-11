@@ -1,3 +1,4 @@
+#I'm calling this the sliding lantern
 
 def GreditDist(str1, str2):
 	"""This algorithm outputs the Levenshtein edit distance in a greedy way and shows step by step how str1 turns into str2
@@ -10,7 +11,23 @@ def GreditDist(str1, str2):
 	result_c = 0 #cursor on the result string
 	min_mn = min(m, n) #minimum between m and n
 	edit_distance = 0 #edit distance
-	
+	########## ALIGNMENT VARIABLES ########
+	str1_alignment = ''
+	str2_alignment = ''
+	mark = ''
+
+
+	if m == 0:
+		str1_alignment = ['-' for i in range(n)]
+		print(str1_alignment+"\n")
+		print(str2)
+		return n
+
+	if n == 0:
+		str2_alignment = ['-'for i in range(m)]
+		print(str1+"\n")
+		print(str2_alignment)
+		return m
 	
 	#For more convenience, I swap of str2 is shorter than str1 (you will understand why)
 	if (min_mn == n):
@@ -21,16 +38,22 @@ def GreditDist(str1, str2):
 	print("Transforming \""+str1+"\" into \""+str2+"\"...\n")
 	#I do a comparison two by two of the characters over the length of the shortest string
 	#For the method I'm about to provide, it's likely to take less time than the other way around
-	for i in range(min_mn):
+	while c1 < min_mn:
 		
 		#test if both current characters are the same
 		if str1[c1] == str2[c2]:
 			#In this case, I do nothing and I move on
 			print(result_string + str1[c1:])
+			#Building up the alignment
+			str1_alignment += str1[c1]
+			str2_alignment += str2[c2]
+			mark += '|'
+			
 			result_string = result_string + str1[c1]
 			c1 += 1
 			c2 += 1
 			result_c += 1
+			
 		
 		else:
 			#increment edit distance
@@ -43,6 +66,10 @@ def GreditDist(str1, str2):
 				#They are the same, the best at this moment is to insert the current character on str2 before the current one of str1
 				print(result_string + str2[c2] + str1[c1:])  # evolution of str1 to str2 for insertion
 				result_string = result_string + str2[c2] + str1[c1]
+				#Alignment
+				str1_alignment += '-' + str1[c1]
+				str2_alignment += str2[c2] + str2[c2 + 1]
+				mark += ' ' + ' '
 				
 				c1 += 1
 				c2 += 2
@@ -57,6 +84,11 @@ def GreditDist(str1, str2):
 					print("--- DELETION ---")
 					print(result_string + str1[c1 + 1:]) #Evolution for deletion
 					result_string += str2[c2]
+					#alignment
+					str1_alignment += str1[c1] + str1[c1 + 1]
+					str2_alignment += '-' + str2[c2]
+					mark += ' ' + ' '
+					
 					c1 += 2
 					c2 += 1
 					result_c += 1
@@ -66,6 +98,11 @@ def GreditDist(str1, str2):
 					print("--- SUBSTITUTION ---")
 					print(result_string + str2[c2] + str1[c1 + 1:]) #evolution for substitution
 					result_string += str2[c2]
+					#alignment
+					str1_alignment += str1[c1]
+					str2_alignment += str2[c2]
+					mark += ' '
+					
 					c1 += 1
 					c2 += 1
 					result_c += 1
@@ -82,6 +119,10 @@ def GreditDist(str1, str2):
 		for j in range(c2, n):
 			print("--- BOTTOM INSERTION")
 			result_string += str2[j]
+			#alignment
+			str1_alignment += '-'
+			str2_alignment += str2[j]
+			
 			edit_distance += 1
 			c1 += 1
 			c2 += 1
@@ -95,12 +136,15 @@ def GreditDist(str1, str2):
 	#edit_distance += n - len(result_string)
 	
 	print("Levenshtein Edit distance (approximation):", edit_distance)
-
+	print("************************ ALIGNMENT ***************************")
+	print(str1_alignment)
+	print(mark)
+	print(str2_alignment)
 
 
 ###### TEST SESSION
 
-str1 = "abcdefeg"
-str2 = "abababacccccccccdfgh"
+str1 = "sunday"
+str2 = "saturday"
 
 GreditDist(str1, str2)
