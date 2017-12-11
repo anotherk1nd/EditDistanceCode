@@ -7,13 +7,13 @@ def def_branch(s1, s2, cost, bound):
     m = len(s2)
 
     if n == 0 and m == 0:
-        return 0, [], []
+        return 0#, [], []
 
     if n == 0:
-        return m, ["_" for i in range(m)], [s2[i] for i in range(m)]
+        return m#, ["_" for i in range(m)], [s2[i] for i in range(m)]
 
     if m == 0:
-        return n, [s1[i] for i in range(n)], ["_" for i in range(n)]
+        return n#, [s1[i] for i in range(n)], ["_" for i in range(n)]
 
     hx1 = abs((n - 1) - m)
     fx1 = hx1 + cost
@@ -32,13 +32,13 @@ def def_branch(s1, s2, cost, bound):
 
     if bound >= fx1:
         # print("Branch 1")
-        deletion,ad1,ad2  = def_branch(s1[:-1], s2, cost + 1, bound)  # Deletion
+        deletion  = def_branch(s1[:-1], s2, cost + 1, bound)  # Deletion
         deletion += 1
     else:
         deletion = 1000000
     if bound >= fx2:
         # print("Branch 2")
-        insertion,ai1,ai2 = def_branch(s1, s2[:-1], cost + 1, bound)  # Insertion
+        insertion = def_branch(s1, s2[:-1], cost + 1, bound)  # Insertion
         insertion += 1
     else:
         insertion = 1000000
@@ -46,31 +46,32 @@ def def_branch(s1, s2, cost, bound):
     if bound >= fx3:
         # print("Branch 3")
         if (s1[-1] != s2[-1]):
-            change,ac1,ac2 = def_branch(s1[:-1], s2[:-1], cost + 1, bound)
+            change = def_branch(s1[:-1], s2[:-1], cost + 1, bound)
             change += 1
         else:
-            change,ac1,ac2 = def_branch(s1[:-1], s2[:-1], cost, bound)
+            change = def_branch(s1[:-1], s2[:-1], cost, bound)
     else:
         change = 1000000
 
-    values = [deletion, insertion, change]
+    #values = [deletion, insertion, change]
     minval = min(deletion, insertion, change)
 
-    if values.index(minval) == 0:
-        ad1 = ad1 + [s1[-1]]
-        ad2 = ad2 + ["_"]
-
-        return minval, ad1, ad2
-
-    elif values.index(minval) == 1:
-        ai1 = ai1 + ["_"]
-        ai2 = ai2 +[s2[-1]]
-
-        return minval, ai1, ai2
-    else:
-        ac1 = ac1 + [s1[-1]]
-        ac2 = ac2 + [s2[-1]]
-        return minval, ac1, ac2
+    return minval
+    # if values.index(minval) == 0:
+    #     ad1 = ad1 + [s1[-1]]
+    #     ad2 = ad2 + ["_"]
+    #
+    #     return minval, ad1, ad2
+    #
+    # elif values.index(minval) == 1:
+    #     ai1 = ai1 + ["_"]
+    #     ai2 = ai2 +[s2[-1]]
+    #
+    #     return minval, ai1, ai2
+    # else:
+    #     ac1 = ac1 + [s1[-1]]
+    #     ac2 = ac2 + [s2[-1]]
+    #     return minval, ac1, ac2
 
 # def get_steps(al1, al2):
 #     n = len(al1)
@@ -97,7 +98,7 @@ def recursive(s1,s2):
         change = recursive(s1[:-1], s2[:-1]) + 1
     else:
         change = recursive(s1[:-1], s2[:-1])
-        
+
     return min(deletion, insertion, change)
 
 # if _name_ == "_main_":
