@@ -1,3 +1,5 @@
+import numpy as np
+
 def edDynamic(x, y):
     # M records is the score array
     # P stores the path information, inside of Path:
@@ -27,4 +29,9 @@ def edDynamic(x, y):
                     P[i][j] = "l"
 
     # return M[len(x)]
-    return M, P
+    return M[i][j]
+
+s = 'sunrise'
+t = 'sunshine'
+
+print edDynamic(s,t)
