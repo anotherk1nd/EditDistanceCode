@@ -1,8 +1,12 @@
 import pandas as pd
+
 import edDynamic as dyn
 import algo_edDivideConquer as DandC
 import branch_and_bound as bb
 from algo_edDiagonal import edDiagonalApproximate as diag
+from edit_distance_greedy_v2 import GreditDist as gred
+
+
 df_str = pd.read_csv(r'output 2017-12-11 18-21-40.csv')
 str1 = df_str[str1]
 str2 = df_str[str2]
