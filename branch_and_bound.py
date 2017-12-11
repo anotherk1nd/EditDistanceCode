@@ -1,5 +1,6 @@
 import string
 from time import time
+from RSG import RSG
 
 def def_branch(s1, s2, cost=0, bound=0):
     n = len(s1)
@@ -83,7 +84,7 @@ def recursive(s1,s2):
         change = recursive(s1[:-1], s2[:-1])
     return min(deletion, insertion, change)
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     print('=============================================================================')
     print("Branch and bound for edit distance")
     print('==========================================================================')
@@ -101,6 +102,17 @@ if __name__ == "__main__":
 
     end_time=time()
     print('The time taken to compute the edit distance is : %3f seconds'%(end_time-start_time))
-    print('*****************')
+    print('***************')
     print('END OF PROGRAM')
-    print('*****************')
+    print('***************')
+
+# str1=RSG(3)
+# str2=RSG(5)
+#
+# print(str1)
+# print(str2)
+#
+# edit_distance,al1,al2=def_branch(str1,str2,0,max(len(str1),len(str2)))
+# print(al1)
+# print(al2)
+# print(edit_distance)
