@@ -31,7 +31,7 @@ def edDynamic(x, y):
     # return M[len(x)]
     return M[i][j]
 
-s = 'sunrise'
-t = 'sunshine'
+#s = 'sunrise'
+#t = 'sunshine'
 
-print edDynamic(s,t)
+#print edDynamic(s,t)

@@ -145,8 +145,8 @@ def GreditDist(str1, str2):
 
 ###### TEST SESSION
 
-#str1 = "sunday"
-#str2 = "saturday"
+str1 = "t"
+str2 = "s"
 
-#ed = GreditDist(str1, str2)
-#print 'This is ed',ed
+ed = GreditDist(str1, str2)
+print 'This is ed',ed
