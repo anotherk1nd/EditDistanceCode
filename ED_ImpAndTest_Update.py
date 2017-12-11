@@ -33,8 +33,8 @@ print s2
 df = pd.DataFrame(columns=('ref','Str1','Str2','Ed','Ed_Matrix','comptime')) #=str(),Str2=str(),Time=int(),stringsAsFactors=FALSE)
 #print df
 counter = 0
-for i in range(1,10):
-    for j in range(1,10):
+for i in range(1,11):
+    for j in range(1,11):
         counter += 1
         str1 = RSG(i)
         str2 = RSG(j)
@@ -55,11 +55,16 @@ for i in range(1,10):
         #df = df.append(dftemp)
         #print df
 
+
+
 print df
 root = 'EditDistanceCode'
 os.path.join(root,) #Use this to work independent of operating system
 path = r'Results/'
 name = 'output '+str(datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S"))+'.csv'
 df.to_csv(path+name)
+
+
+
 
 #print s,t,ed(s,t)

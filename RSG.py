@@ -12,6 +12,5 @@ def RSG(N):
     #print str1
     return str1
 
-
 #print RSG(5)
 #print RSG(5)
