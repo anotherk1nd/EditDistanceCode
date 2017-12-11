@@ -129,9 +129,9 @@ def recursive(s1,s2):
 # print(str1)
 # print(str2)
 #
-str1 = 'sunrise'
-str2 = 'sunshine'
-edit_distance,al1,al2=def_branch(str1,str2,0,max(len(str1),len(str2)))
-print(al1)
-print(al2)
-print(edit_distance)
+# str1 = 'sunrise'
+# str2 = 'sunshine'
+# edit_distance,al1,al2=def_branch(str1,str2,0,max(len(str1),len(str2)))
+# print(al1)
+# print(al2)
+# print(edit_distance)
