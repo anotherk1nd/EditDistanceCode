@@ -3,9 +3,9 @@ import time
 
 from edDynamic import edDynamic as ed
 import algo_edDivideConquer as DandC
-#from branch_and_bound import def_branch as bb
+from branch_and_bound import def_branch as bb
 #from algo_edDiagonal import edDiagonalApproximate as diag
-from edit_distance_greedy_v2_return import GreditDist as gred
+from edit_distance_greedy_v2 import GreditDist as gred
 #from algo_edDiagonal import edDiagonalApproximate as kstrip
 
 
@@ -44,12 +44,12 @@ for i in range(99):
     #Greed
     time1 = time.time()
     # print ed(s,t)
-    results = ed(s, t)
+    results = gred(s, t)
     # print results
     time2 = time.time()
     dtime = time2 - time1
     df.at[counter, 'Gred_time'] = dtime
-    """
+
     #B+B
     time1 = time.time()
     # print ed(s,t)
@@ -58,7 +58,8 @@ for i in range(99):
     time2 = time.time()
     dtime = time2 - time1
     df.at[counter, 'Gred_time'] = dtime
-
+    
+    """
     #K-strip
     time1 = time.time()
     # print ed(s,t)
