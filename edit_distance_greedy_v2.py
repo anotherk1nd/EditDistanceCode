@@ -75,38 +75,38 @@ def GreditDist(str1, str2):
 					c2 += 2
 					result_c += 2
 			
-			#Else, if the next character on str1 and the current character of str2 are alike then I need to delete the current character on str1
-			#I can do that since all the previous characters on both strings till now are the same
-			
-			else: #if it's the end of the first string, no deletion possible
+				#Else, if the next character on str1 and the current character of str2 are alike then I need to delete the current character on str1
+				#I can do that since all the previous characters on both strings till now are the same
 
-				if c1 < min_mn-1:
-					if str1[c1 + 1] == str2[c2]:
-						# print("--- DELETION ---")
-						# print(result_string + str1[c1 + 1:]) #Evolution for deletion
+				else: #if it's the end of the first string, no deletion possible
+
+					if c1 < min_mn-1:
+						if str1[c1 + 1] == str2[c2]:
+							# print("--- DELETION ---")
+							# print(result_string + str1[c1 + 1:]) #Evolution for deletion
+							result_string += str2[c2]
+							#alignment
+							str1_alignment += str1[c1] + str1[c1 + 1]
+							str2_alignment += '-' + str2[c2]
+							mark += ' ' + ' '
+
+							c1 += 2
+							c2 += 1
+							result_c += 1
+
+					#Else, substitution is my backup solution... str1[c1] becomes str2[c2]
+					else:
+						# print("--- SUBSTITUTION ---")
+						# print(result_string + str2[c2] + str1[c1 + 1:]) #evolution for substitution
 						result_string += str2[c2]
 						#alignment
-						str1_alignment += str1[c1] + str1[c1 + 1]
-						str2_alignment += '-' + str2[c2]
-						mark += ' ' + ' '
+						str1_alignment += str1[c1]
+						str2_alignment += str2[c2]
+						mark += ' '
 
-						c1 += 2
+						c1 += 1
 						c2 += 1
 						result_c += 1
-				
-				#Else, substitution is my backup solution... str1[c1] becomes str2[c2]
-				else:
-					# print("--- SUBSTITUTION ---")
-					# print(result_string + str2[c2] + str1[c1 + 1:]) #evolution for substitution
-					result_string += str2[c2]
-					#alignment
-					str1_alignment += str1[c1]
-					str2_alignment += str2[c2]
-					mark += ' '
-					
-					c1 += 1
-					c2 += 1
-					result_c += 1
 
 		# Print the result string
 		# print(str2)
