@@ -35,7 +35,7 @@ def GreditDist(str1, str2):
 		m,n = n, m
 	
 	
-	print("Transforming \""+str1+"\" into \""+str2+"\"...\n")
+	#print("Transforming \""+str1+"\" into \""+str2+"\"...\n")
 	#I do a comparison two by two of the characters over the length of the shortest string
 	#For the method I'm about to provide, it's likely to take less time than the other way around
 	while c1 < min_mn:
@@ -67,9 +67,9 @@ def GreditDist(str1, str2):
 					# print(result_string + str2[c2] + str1[c1:])  # evolution of str1 to str2 for insertion
 					result_string = result_string + str2[c2] + str1[c1]
 					#Alignment
-					str1_alignment += '-' + str1[c1]
-					str2_alignment += str2[c2] + str2[c2 + 1]
-					mark += ' ' + ' '
+					# str1_alignment += '-' + str1[c1]
+					# str2_alignment += str2[c2] + str2[c2 + 1]
+					# mark += ' ' + ' '
 
 					c1 += 1
 					c2 += 2
@@ -86,9 +86,9 @@ def GreditDist(str1, str2):
 							# print(result_string + str1[c1 + 1:]) #Evolution for deletion
 							result_string += str2[c2]
 							#alignment
-							str1_alignment += str1[c1] + str1[c1 + 1]
-							str2_alignment += '-' + str2[c2]
-							mark += ' ' + ' '
+							# str1_alignment += str1[c1] + str1[c1 + 1]
+							# str2_alignment += '-' + str2[c2]
+							# mark += ' ' + ' '
 
 							c1 += 2
 							c2 += 1
@@ -100,9 +100,9 @@ def GreditDist(str1, str2):
 						# print(result_string + str2[c2] + str1[c1 + 1:]) #evolution for substitution
 						result_string += str2[c2]
 						#alignment
-						str1_alignment += str1[c1]
-						str2_alignment += str2[c2]
-						mark += ' '
+						# str1_alignment += str1[c1]
+						# str2_alignment += str2[c2]
+						# mark += ' '
 
 						c1 += 1
 						c2 += 1
@@ -121,8 +121,8 @@ def GreditDist(str1, str2):
 			#print("--- BOTTOM INSERTION")
 			result_string += str2[j]
 			#alignment
-			str1_alignment += '-'
-			str2_alignment += str2[j]
+			# str1_alignment += '-'
+			# str2_alignment += str2[j]
 			
 			edit_distance += 1
 			c1 += 1
@@ -136,7 +136,7 @@ def GreditDist(str1, str2):
 	#edit distance += length(str2) - length(result string)
 	#edit_distance += n - len(result_string)
 	
-	return edit_distance, str1_alignment, str2_alignment, mark
+	return edit_distance#, str1_alignment, str2_alignment, mark
 
 
 ###### TEST SESSION
