@@ -35,7 +35,7 @@ def GreditDist(str1, str2):
 		m,n = n, m
 	
 	
-	print("Transforming \""+str1+"\" into \""+str2+"\"...\n")
+	#print("Transforming \""+str1+"\" into \""+str2+"\"...\n")
 	#I do a comparison two by two of the characters over the length of the shortest string
 	#For the method I'm about to provide, it's likely to take less time than the other way around
 	while c1 < min_mn:
@@ -136,13 +136,15 @@ def GreditDist(str1, str2):
 	#edit distance += length(str2) - length(result string)
 	#edit_distance += n - len(result_string)
 	
-	return edit_distance, str1_alignment, str2_alignment, mark
+	return edit_distance #, str1_alignment, str2_alignment, mark
 
 
 ###### TEST SESSION
 
-# str1 = ""
-# str2 = "saturday"
+str1 = "z"
+str2 = "x"
+print GreditDist(str1,str2)
+
 #
 # edit_distance, al1, al2, mark = GreditDist(str1, str2)
 #
