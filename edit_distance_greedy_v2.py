@@ -6,6 +6,8 @@ def GreditDist(str1, str2):
 	
 	m = len(str1) #Length of str1
 	n = len(str2) #Length of str2
+	str1 += '0'
+	str2 += '0'
 	c1 = c2 = 0 #cursor on str1, cursor on str2
 	result_string = "" #portion already modified of the string
 	result_c = 0 #cursor on the result string
@@ -21,13 +23,13 @@ def GreditDist(str1, str2):
 		str1_alignment = ''.join(['-' for i in range(n)])
 		mark = ''.join([' ' for i in range(n)])
 		
-		return n, str1_alignment, str2, mark #I return the edit distance and the matching alignment
+		return n#, str1_alignment, str2, mark #I return the edit distance and the matching alignment
 
 	if n == 0:
 		str2_alignment = ''.join(['-'for i in range(m)])
 		mark = ''.join([' ' for i in range(m)])
 		
-		return m, str1, str2_alignment, mark
+		return m#, str1, str2_alignment, mark
 	
 	#For more convenience, I swap of str2 is shorter than str1 (you will understand why)
 	if (min_mn == n):
@@ -55,58 +57,79 @@ def GreditDist(str1, str2):
 			result_c += 1
 			
 		
-		else:
+		elif str1[c1] == str2[c2 + 1]:
 			#increment edit distance
 			edit_distance += 1
 			
 			#I compare the current character of str1 to the next character of str2
-			if c2 < n-1:
-				if str1[c1] == str2[c2 + 1]:
-					# print("--- INSERTION ---")
-					#They are the same, the best at this moment is to insert the current character on str2 before the current one of str1
-					# print(result_string + str2[c2] + str1[c1:])  # evolution of str1 to str2 for insertion
-					result_string = result_string + str2[c2] + str1[c1]
-					#Alignment
-					# str1_alignment += '-' + str1[c1]
-					# str2_alignment += str2[c2] + str2[c2 + 1]
-					# mark += ' ' + ' '
 
-					c1 += 1
-					c2 += 2
-					result_c += 2
-			
-				#Else, if the next character on str1 and the current character of str2 are alike then I need to delete the current character on str1
-				#I can do that since all the previous characters on both strings till now are the same
+			# print("--- INSERTION ---")
+			# They are the same, the best at this moment is to insert the current character on str2 before the current one of str1
+			# print(result_string + str2[c2] + str1[c1:])  # evolution of str1 to str2 for insertion
+			result_string = result_string + str2[c2] + str1[c1]
+			# Alignment
+			# str1_alignment += '-' + str1[c1]
+			# str2_alignment += str2[c2] + str2[c2 + 1]
+			# mark += ' ' + ' '
 
-				else: #if it's the end of the first string, no deletion possible
+			c1 += 1
+			c2 += 2
+			result_c += 2
 
-					if c1 < min_mn-1:
-						if str1[c1 + 1] == str2[c2]:
-							# print("--- DELETION ---")
-							# print(result_string + str1[c1 + 1:]) #Evolution for deletion
-							result_string += str2[c2]
-							#alignment
-							# str1_alignment += str1[c1] + str1[c1 + 1]
-							# str2_alignment += '-' + str2[c2]
-							# mark += ' ' + ' '
+			# Else, if the next character on str1 and the current character of str2 are alike then I need to delete the current character on str1
+			# I can do that since all the previous characters on both strings till now are the same
 
-							c1 += 2
-							c2 += 1
-							result_c += 1
 
-					#Else, substitution is my backup solution... str1[c1] becomes str2[c2]
-					else:
-						# print("--- SUBSTITUTION ---")
-						# print(result_string + str2[c2] + str1[c1 + 1:]) #evolution for substitution
-						result_string += str2[c2]
-						#alignment
-						# str1_alignment += str1[c1]
-						# str2_alignment += str2[c2]
-						# mark += ' '
+		elif str1[c1 + 1] == str2[c2]:  # if it's the end of the first string, no deletion possible
 
-						c1 += 1
-						c2 += 1
-						result_c += 1
+			# print("--- DELETION ---")
+
+			# print(result_string + str1[c1 + 1:]) #Evolution for deletion
+			edit_distance += 1
+
+			result_string += str2[c2]
+
+			# alignment
+
+			# str1_alignment += str1[c1] + str1[c1 + 1]
+
+			# str2_alignment += '-' + str2[c2]
+
+			# mark += ' ' + ' '
+
+			c1 += 2
+
+			c2 += 1
+
+			result_c += 1
+
+		# Else, substitution is my backup solution... str1[c1] becomes str2[c2]
+
+		else:
+
+			# print("--- SUBSTITUTION ---")
+
+			# print(result_string + str2[c2] + str1[c1 + 1:]) #evolution for substitution
+			edit_distance += 1
+
+			result_string += str2[c2]
+
+			# alignment
+
+			# str1_alignment += str1[c1]
+
+			# str2_alignment += str2[c2]
+
+			# mark += ' '
+
+			c1 += 1
+
+			c2 += 1
+
+			result_c += 1
+
+
+
 
 		# Print the result string
 		# print(str2)
@@ -151,3 +174,7 @@ def GreditDist(str1, str2):
 # print(al1)
 # print(mark)
 # print(al2)
+
+
+edit = GreditDist("abcd", "decad")
+print(edit)
