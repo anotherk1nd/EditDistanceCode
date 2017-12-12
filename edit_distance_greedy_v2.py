@@ -60,38 +60,39 @@ def GreditDist(str1, str2):
 			edit_distance += 1
 			
 			#I compare the current character of str1 to the next character of str2
-			if str1[c1] == str2[c2 + 1] and c2 < n:
+			if c2 < n-1:
+				if str1[c1] == str2[c2 + 1]:
+					# print("--- INSERTION ---")
+					#They are the same, the best at this moment is to insert the current character on str2 before the current one of str1
+					# print(result_string + str2[c2] + str1[c1:])  # evolution of str1 to str2 for insertion
+					result_string = result_string + str2[c2] + str1[c1]
+					#Alignment
+					str1_alignment += '-' + str1[c1]
+					str2_alignment += str2[c2] + str2[c2 + 1]
+					mark += ' ' + ' '
 
-				# print("--- INSERTION ---")
-				#They are the same, the best at this moment is to insert the current character on str2 before the current one of str1
-				# print(result_string + str2[c2] + str1[c1:])  # evolution of str1 to str2 for insertion
-				result_string = result_string + str2[c2] + str1[c1]
-				#Alignment
-				str1_alignment += '-' + str1[c1]
-				str2_alignment += str2[c2] + str2[c2 + 1]
-				mark += ' ' + ' '
-				
-				c1 += 1
-				c2 += 2
-				result_c += 2
+					c1 += 1
+					c2 += 2
+					result_c += 2
 			
 			#Else, if the next character on str1 and the current character of str2 are alike then I need to delete the current character on str1
 			#I can do that since all the previous characters on both strings till now are the same
 			
 			else: #if it's the end of the first string, no deletion possible
 
-				if c1 < min_mn-1 and str1[c1 + 1] == str2[c2]:
-					# print("--- DELETION ---")
-					# print(result_string + str1[c1 + 1:]) #Evolution for deletion
-					result_string += str2[c2]
-					#alignment
-					str1_alignment += str1[c1] + str1[c1 + 1]
-					str2_alignment += '-' + str2[c2]
-					mark += ' ' + ' '
-					
-					c1 += 2
-					c2 += 1
-					result_c += 1
+				if c1 < min_mn-1:
+					if str1[c1 + 1] == str2[c2]:
+						# print("--- DELETION ---")
+						# print(result_string + str1[c1 + 1:]) #Evolution for deletion
+						result_string += str2[c2]
+						#alignment
+						str1_alignment += str1[c1] + str1[c1 + 1]
+						str2_alignment += '-' + str2[c2]
+						mark += ' ' + ' '
+
+						c1 += 2
+						c2 += 1
+						result_c += 1
 				
 				#Else, substitution is my backup solution... str1[c1] becomes str2[c2]
 				else:
